@@ -32,3 +32,31 @@ export declare class A {
     do(): AliasClass;
 }
 ```
+
+If this doesn't work you try to add ts-transform-paths as a getCustomTransformers for the Webpack.
+
+``` JavaScript
+const path = require('path');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const pathsTransformer = require("ts-transform-paths").default;
+
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            getCustomTransformers: (program) => pathsTransformer()
+          }
+        }
+      }
+    ],
+  },
+// ...
+};
+
+```

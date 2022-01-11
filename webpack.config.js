@@ -1,5 +1,6 @@
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const pathsTransformer = require("ts-transform-paths").default;
 
 module.exports = {
   entry: './src/index.ts',
@@ -7,8 +8,13 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
         exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+          options: {
+            getCustomTransformers: (program) => pathsTransformer()
+          }
+        }
       }
     ],
   },
