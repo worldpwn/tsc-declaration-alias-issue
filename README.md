@@ -33,7 +33,7 @@ export declare class A {
 }
 ```
 
-If this doesn't work you try to add ts-transform-paths as a getCustomTransformers for the Webpack.
+If this doesn't work four you try to add ts-transform-paths as a getCustomTransformers for the Webpack.
 
 ``` JavaScript
 const path = require('path');
