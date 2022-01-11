@@ -12,7 +12,7 @@ export declare class A {
 
 ```
 
-Out-of-the-box typescript compiler doesn't support transformations. So this line in tsconfig.json do nothing:
+It seems like TypeScript compiler doesn't use this transformation:
 
 ``` JSON
 "plugins": [
